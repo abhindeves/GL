@@ -1,49 +1,54 @@
-# 📈 Predicting Tomorrow's Stock Market Close Price Using News and Stock Price Data: A Detailed Guide 📚
+# 📈 Predicting Tomorrow's Stock Market Movement Using News and Stock Price Data: A Detailed Guide 📚
 
 ## 🚀 Introduction
-In today's fast-paced financial markets, investors are constantly seeking innovative ways to gain an edge and predict stock market movements. One approach gaining traction is leveraging machine learning algorithms to analyze news articles and historical stock price data to forecast tomorrow's closing prices. In this guide, we'll delve into the detailed process of building such a predictive model.
+In today's fast-paced financial markets, investors are constantly seeking innovative ways to gain an edge and predict stock market movements. One approach gaining traction is leveraging machine learning algorithms to analyze news articles and historical stock price data to forecast tomorrow's market movement. In this guide, we'll delve into the detailed process of building such a predictive model.
 
 ## 📝 Table of Contents
 1. Data Collection
 2. Data Preprocessing
-3. Feature Selection and Engineering
-4. Model Selection and Training
-5. Model Evaluation
-6. Interpretation and Insights
-7. Deployment and Monitoring
-8. Conclusion
+3. Exploratory Data Analysis (EDA)
+4. Feature Engineering
+5. Model Selection and Training
+6. Model Evaluation
+7. Interpretation and Insights
+8. Deployment and Monitoring
+9. Conclusion
 
 ## 📚 Data Collection <a name="data-collection"></a>
-- 📰 **News Data**: Start by collecting news articles from reliable sources such as financial news websites, Reuters, Bloomberg, etc. These articles should cover relevant topics like company announcements, industry trends, economic indicators, and geopolitical events.
-- 📈 **Stock Price Data**: Obtain historical stock price data for the target company or companies. This data should include features like opening price, closing price, highest price, lowest price, and trading volume.
+- 📰 **News Data**: We scraped over 24 years of news headlines from trusted sources like Forbes, CNBC, and Microsoft News, totaling 1.4 million headlines.
+- 📈 **Stock Price Data**: Finance provided us with historical stock price data, including opening price, closing price, highest price, lowest price, and trading volume.
 
 ## 🧹 Data Preprocessing <a name="data-preprocessing"></a>
-- 📝 **Text Data Preprocessing**: Clean and preprocess the text data by removing punctuation, stop words, and special characters. Perform stemming or lemmatization to standardize words.
-- 😃 **Sentiment Analysis**: Utilize sentiment analysis techniques to extract sentiment scores from news articles. This helps in capturing the market sentiment reflected in the news.
-- 🛠️ **Feature Engineering**: Create additional features such as moving averages, relative strength index (RSI), and other technical indicators from the stock price data.
+- 🔄 **Cleaning and Imputation**: We removed duplicates, handled missing values, and converted the scraped data for further analysis.
+- 📝 **Text Data Preprocessing**: Preprocessing was not required for the VADER sentiment analysis module
+- 😃 **Sentiment Analysis**: Utilized Vader sentiment analysis to extract polarity and subjectivity scores from news headlines. Also used TextBlob from NLTK to get positive, negative, neutral, and compound values.
+  
+## 📊 Exploratory Data Analysis (EDA) <a name="eda"></a>
+- 🌐 **Word Cloud**: Created a word cloud with the 24+ year data to visualize common words in headlines.
+- 📊 **News Frequency Analysis**: Plotted the frequency of news articles by source to identify key contributors.
+- 📈 **Stock Price Visualization**: Visualized historical stock price data to identify trends and patterns.
 
-## 🎯 Feature Selection and Engineering <a name="feature-selection-and-engineering"></a>
-- 🧩 **Combine Data**: Combine the processed news data and stock price data into a single dataset.
-- 🔍 **Feature Selection**: Perform feature selection techniques like correlation analysis and recursive feature elimination to identify the most relevant features for prediction.
-- 🏗️ **Feature Engineering**: Engineer new features based on domain knowledge or insights gained from exploratory data analysis.
+## 🎯 Feature Engineering <a name="feature-engineering"></a>
+- 🔍 **Combining Data**: Combined processed news data and stock price data into a single dataset.
+- 📈 **Creating New Features**: Used rolling window functions to generate features such as moving averages, RSI, and other technical indicators from stock price data.
+- 📊 **News Features**: Incorporated sentiment scores and other text analysis features derived from news headlines.
 
 ## 🤖 Model Selection and Training <a name="model-selection-and-training"></a>
-- 🧠 **Choose Models**: Choose appropriate machine learning algorithms such as regression models, ensemble methods, or neural networks for prediction.
-- 🚂 **Train/Test Split**: Split the dataset into training and testing sets for model evaluation.
-- 🎯 **Train Models**: Train the selected models on the training data and fine-tune hyperparameters using techniques like grid search or random search.
+- 🧠 **Model Selection**: Explored various models including Naive Bayes, Logistic Regression, and others.
+- 🚂 **Hyperparameter Tuning**: Tuned hyperparameters using techniques like grid search to optimize model performance.
+- 🎯 **Training**: Trained the selected models on the training data.
 
 ## 📊 Model Evaluation <a name="model-evaluation"></a>
-- 📏 **Evaluate Models**: Evaluate the performance of the trained models using evaluation metrics like Mean Absolute Error (MAE), Mean Squared Error (MSE), and Root Mean Squared Error (RMSE).
-- 🥇 **Select Best Model**: Compare the performance of different models and select the one with the lowest error metrics.
-- 🧪 **Validate Model**: Validate the model on unseen data to assess its generalization ability.
+- 📏 **Evaluation Metrics**: Utilized confusion matrix as the main metric to evaluate model performance, providing precision, accuracy, and F1 score for binary classification of market movement.
+- 🥇 **Comparison**: Compared the performance of different models and selected the one with the highest accuracy.
 
 ## 💡 Interpretation and Insights <a name="interpretation-and-insights"></a>
-- 📖 **Interpret Results**: Interpret the coefficients or feature importance scores of the selected model to understand the impact of different features on the predicted stock prices.
-- 🌐 **Analyze Predictions**: Analyze the model predictions in the context of real-world events and market dynamics to gain actionable insights for trading decisions.
+- 📖 **Interpreting Results**: Analyzed coefficients or feature importance scores of the selected model to understand the impact of different features on predicting market movement.
+- 📈 **Analyzing Predictions**: Examined model predictions in the context of real-world events and market dynamics to gain actionable insights.
 
 ## 🚀 Deployment and Monitoring <a name="deployment-and-monitoring"></a>
-- 🌐 **Deploy Model**: Deploy the trained model into a production environment where it can generate predictions in real-time.
-- 📊 **Monitor Performance**: Implement monitoring mechanisms to track the performance of the model over time and retrain it periodically with new data to ensure its accuracy and reliability.
+- 🌐 **Model Deployment**: Deployed the trained model into a production environment for real-time predictions.
+- 📊 **Performance Monitoring**: Implemented mechanisms to monitor model performance over time, retraining periodically with new data to maintain accuracy and reliability.
 
 ## 🏁 Conclusion <a name="conclusion"></a>
-Predicting tomorrow's stock market close price using news and stock price data is a challenging yet rewarding endeavor. By following the detailed process outlined in this guide, investors can leverage advanced machine learning techniques to gain valuable insights and make informed trading decisions in dynamic financial markets. However, it's essential to remember that no model can perfectly predict market movements, and risk management strategies should always be employed to mitigate potential losses. 📉📈
+Predicting tomorrow's stock market movement using news and stock price data is a challenging yet rewarding endeavor. By following the detailed process outlined in this guide, investors can leverage advanced machine learning techniques to gain valuable insights and make informed trading decisions in dynamic financial markets. However, it's essential to remember that no model can perfectly predict market movements and risk management strategies should always be employed to mitigate potential losses. 📉📈
